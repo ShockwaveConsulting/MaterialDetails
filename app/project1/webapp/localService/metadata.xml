@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="MaterialService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Parts" EntityType="MaterialService.Parts"/>
+                <EntitySet Name="Materials" EntityType="MaterialService.Materials"/>
+                <EntitySet Name="Vendors" EntityType="MaterialService.Vendors"/>
+            </EntityContainer>
+            <EntityType Name="Parts">
+                <Key>
+                    <PropertyRef Name="PartUUID"/>
+                </Key>
+                <Property Name="PartUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50"/>
+                <Property Name="vendors" Type="Edm.String" MaxLength="50"/>
+                <Property Name="materials" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Price" Type="Edm.Decimal" Scale="2" Precision="10"/>
+            </EntityType>
+            <EntityType Name="Materials">
+                <Key>
+                    <PropertyRef Name="MaterialUUID"/>
+                </Key>
+                <Property Name="MaterialUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50"/>
+                <Property Name="AvailabilityDt" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="Vendors">
+                <Key>
+                    <PropertyRef Name="VendorUID"/>
+                </Key>
+                <Property Name="VendorUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Category" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <Annotations Target="MaterialService.Parts/PartUUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="MaterialService.Materials/MaterialUUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="MaterialService.Vendors/VendorUID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
