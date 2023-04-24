@@ -16,7 +16,9 @@
         "@sap/ux-specification": "^1.108.2",
         "sqlite3": "^5.0.4",
         "rimraf": "^3.0.2",
-        "@sap/hdi-deploy": "4.6.0"
+        "@sap/hdi-deploy": "4.6.0",
+        "@sap/hdbext" : "7.7.3",
+        "sap-hdbext-promisfied" : "2.202304.2"
     },
     "scripts": {
         "start": "cds run",
