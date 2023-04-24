@@ -1,4 +1,6 @@
 using { com.ShockwaveConsulting as o} from '../db/schema';
+using CV_VENDOR_PARTS from '../db/schema';
+
 
 @path: 'api/materialSvc'
 service MaterialService {
@@ -9,5 +11,8 @@ service MaterialService {
      
     @requires: 'Admin' 
     entity Vendors   as projection on o.Vendors;
+
+    @readonly
+    entity VendorParts as projection on CV_VENDOR_PARTS;
 
 }

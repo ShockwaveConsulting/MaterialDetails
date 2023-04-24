@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_VENDOR_PARTS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_VENDOR_PARTS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="COM_SHOCKWAVECONSULTING_VENDORS">
+    <resourceUri>COM_SHOCKWAVECONSULTING_VENDORS</resourceUri>
+  </DataSource>
+  <DataSource id="COM_SHOCKWAVECONSULTING_PARTS">
+    <resourceUri>COM_SHOCKWAVECONSULTING_PARTS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="VENDORUID"/>
+      <viewAttribute id="VENDOR_NAME"/>
+      <viewAttribute id="CATEGORY"/>
+      <viewAttribute id="PARTUUID"/>
+      <viewAttribute id="PART_DESCRIPTION"/>
+      <viewAttribute id="PRICE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="COM_SHOCKWAVECONSULTING_VENDORS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDORUID" source="VENDORUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDOR_NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+    </input>
+    <input node="COM_SHOCKWAVECONSULTING_PARTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTUUID" source="PARTUUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PART_DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VENDORUID" source="VENDORS"/>
+    </input>
+    <joinAttribute name="VENDORUID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="VENDORUID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VENDORUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="VENDORUID"/>
+    </attribute>
+    <attribute id="VENDOR_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="VENDOR_NAME"/>
+    </attribute>
+    <attribute id="CATEGORY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="PARTUUID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTUUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="PARTUUID"/>
+    </attribute>
+    <attribute id="PART_DESCRIPTION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1" columnName="PART_DESCRIPTION"/>
+    </attribute>
+    <attribute id="PRICE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRICE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="COM_SHOCKWAVECONSULTING_VENDORS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="-42" y="44"/>
+      <rectangleSize width="320.91015625"/>
+    </shape>
+    <shape modelObjectName="COM_SHOCKWAVECONSULTING_PARTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="383" y="44"/>
+      <rectangleSize width="301.345703125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
