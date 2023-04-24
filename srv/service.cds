@@ -15,4 +15,17 @@ service MaterialService {
     @readonly
     entity VendorParts as projection on CV_VENDOR_PARTS;
 
+    function sayHello() returns String;
+    
+    function sayHelloTo(name: String) returns String;
+
+    type oVendor {
+        VendorUID : String;
+        Name      : String;
+        Category  : String;
+    }
+    action VendorCreate(Vendor: oVendor) returns Boolean;
+
+    
+
 }
