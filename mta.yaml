@@ -32,6 +32,8 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: materialDetails-db
+    build-parameters:
+      ignore: ["default-env.json", ".env"]
 
   - name: materialDetails
     type: approuter.nodejs

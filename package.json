@@ -15,13 +15,15 @@
     "devDependencies": {
         "@sap/ux-specification": "^1.108.2",
         "sqlite3": "^5.0.4",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "@sap/hdi-deploy": "4.6.0"
     },
     "scripts": {
         "start": "cds run",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cds deploy --to hana:materialDetails-db",
-        "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-hybrid" : "cds watch --profile hybrid",
+        "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",        
         "undeploy": "cf undeploy undefined --delete-services --delete-service-keys --delete-service-brokers",
         "app": "npm start --prefix app"
     },
